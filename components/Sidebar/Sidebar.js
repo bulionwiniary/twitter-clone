@@ -33,7 +33,7 @@ export default function Sidebar() {
             <button className="hidden xl:inline ml-auto rounded-full text-[#d9d9d9] bg-[#1292e7] w-56 h-[52px] text-lg font-bold shadow-sm hover:bg-[#1a8cd8] duration-200">Tweet</button>
 
             <div className='text-[#d9d9d9] hidden sm:flex flex-row items-center justify-center mt-auto xl:ml-24 hoverAnimation -mr-5'>
-                <img src='https://scontent-frx5-1.xx.fbcdn.net/v/t1.6435-9/180978949_314228950059549_1005358403722529104_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=H9Aph8axL3kAX87x4GW&_nc_ht=scontent-frx5-1.xx&oh=9e69a83385611ebef0232ec10774d7d7&oe=61C66F8E' alt='user Image' className='rounded-full h-10 w-10 rounded-full xl:mr-2.5' />
+                <img src='https://scontent-frx5-1.xx.fbcdn.net/v/t1.6435-9/180978949_314228950059549_1005358403722529104_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=H9Aph8axL3kAX87x4GW&_nc_ht=scontent-frx5-1.xx&oh=9e69a83385611ebef0232ec10774d7d7&oe=61C66F8E' alt='user Image' className=' h-10 w-10 rounded-full xl:mr-2.5' />
                 <div className='hidden xl:inline leading-5 '>
                     <h4 className='font-bold'>Mateusz Krawczyk</h4>
                     <p className='text-[#6e767d]'>@bulionwiniary</p>
