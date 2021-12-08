@@ -19,8 +19,6 @@ export default function Input() {
     const [showEmojis, setShowEmojis] = useState(false)
     const [loading, setLoading] = useState(false)
     const filePickerRef = useRef(null)
-
-    a
     const {data : session} = useSession()
 
     const textChangeHandler = (e) => {

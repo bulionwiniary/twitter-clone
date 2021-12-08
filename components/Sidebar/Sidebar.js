@@ -17,7 +17,6 @@ import React from 'react'
 export default function Sidebar() {
 
     const { data: session } = useSession()
-    console.log(session)
 
     return (
         <div className="hidden sm:flex flex-col items-center xl:items-start xl:w-[360px] p-2 h-full fixed">
