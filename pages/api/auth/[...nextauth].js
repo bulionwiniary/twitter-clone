@@ -1,7 +1,5 @@
 import NextAuth, { getServerSession } from "next-auth";
 import GoogleProvider from 'next-auth/providers/google'
-import jose from "node-jose";
-
 
 export default NextAuth({
     //configure one or more authentication providers
