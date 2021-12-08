@@ -1,7 +1,6 @@
 import React from 'react'
 
 function SidebarLink (props) {
-    console.log(props.Icon)
     return (
         <div className={`text-[#d9d9d9] flex items-center justify-center 
         xl:justify-start text-xl space-x-3 hoverAnimation ${props. active && 'font-bold'}`}>

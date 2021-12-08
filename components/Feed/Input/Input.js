@@ -10,6 +10,7 @@ import { collection, addDoc, serverTimestamp, updateDoc, doc } from '@firebase/f
 import { ref, getDownloadURL, uploadString } from '@firebase/storage'
 import React, { useState, useRef } from 'react'
 import Loader from 'react-loader-spinner'
+import { useSession } from 'next-auth/react' 
 
 export default function Input() {
 
@@ -18,6 +19,9 @@ export default function Input() {
     const [showEmojis, setShowEmojis] = useState(false)
     const [loading, setLoading] = useState(false)
     const filePickerRef = useRef(null)
+
+    a
+    const {data : session} = useSession()
 
     const textChangeHandler = (e) => {
         setInput(e.target.value)
@@ -59,8 +63,12 @@ export default function Input() {
         setLoading(true)
 
         const docRef = await addDoc(collection(db, 'posts'), {
+            id: session.user.uid,
+            username: session.user.name,
+            userImg: session.user.image,
+            tag: session.user.tag,
             text: input,
-            timestamp: serverTimestamp()
+            timestamp: serverTimestamp(),
         })
 
         const imgRef = ref(storage, `posts/${docRef.id}/image`)
@@ -90,7 +98,7 @@ export default function Input() {
                         color='#1d9bf0'
                     />
                 </div>}
-                <img src='https://scontent-frx5-1.xx.fbcdn.net/v/t1.6435-9/180978949_314228950059549_1005358403722529104_n.jpg?_nc_cat=105&ccb=1-5&_nc_sid=09cbfe&_nc_ohc=H9Aph8axL3kAX87x4GW&_nc_ht=scontent-frx5-1.xx&oh=9e69a83385611ebef0232ec10774d7d7&oe=61C66F8E' alt='user Image' className={`rounded-full h-11 w-11  cursor-pointer ${loading && 'opacity-40'}`} />
+                <img src={session.user.image} alt='user Image' className={`rounded-full h-11 w-11  cursor-pointer ${loading && 'opacity-40'}`} />
                 <div className={`text-white w-full divide-y divide-gray-700 ${loading && 'opacity-40'}`}>
                     <div className={`${selectedFile && 'pb-7'} ${input && 'space-y-2.5'}`}>
                         <textarea
@@ -110,7 +118,7 @@ export default function Input() {
                             <img
                                 src={selectedFile}
                                 alt='selected image'
-                                className='rounden-2xl max-h-80 object-contain' />
+                                className='rounded-2xl max-h-80 object-contain' />
                         </div>
                     )}
 
@@ -131,7 +139,7 @@ export default function Input() {
                             <div className='icon'>
                                 <CalendarIcon className='text-[#1d9bf0] h-[22px]' />
                             </div>
-                            {showEmojis && <Picker
+                            {showEmojis && <><Picker
                                 onSelect={addEmoji}
                                 style={{
                                     position: "absolute",
@@ -139,9 +147,9 @@ export default function Input() {
                                     marginLeft: -40,
                                     maxWidth: 320,
                                     borderRadius: 20,
+                                    zIndex: 20
                                 }}
-                                theme='dark'
-                            />}
+                                theme='dark' /><div className='fixed top-0 left-0 w-screen h-screen z-10' onClick = {() => setShowEmojis(false)}></div></>}
                         </div>
                         <button disabled={!input.trim() && !selectedFile} className='font-bold bg-[#1d9bf0] hover:bg-[#1a8cd8] py-1.5 px-4 rounded-full transition disabled:opacity-50 disabled:bg-[#1d9bf0] disabled:cursor-default' onClick={sendPost}>Tweet</button>
                     </div>}
@@ -150,3 +158,4 @@ export default function Input() {
         </>
     )
 }
+updateDoc
